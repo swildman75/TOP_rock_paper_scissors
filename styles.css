@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+:root {
+  /* CSS HEX */
+  --xanthic: #f2f230ff;
+  --inchworm: #c2f261ff;
+  --light-green: #91f291ff;
+  --aquamarine: #61f2c2ff;
+  --fluorescent-blue: #30f2f2ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fluorescent-blue);
+}
+
+body {
+  text-align: center;
+  font-family: 'Righteous', sans-serif;
+  color: white;
+  height: 100vh;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+.pick {
+  color: white;
+  text-align: center;
+  font-size: 2em;
+  margin: 20px 0px;
+}
+
+.img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.small_img {
+  max-width: 200px;
+}
+
+.computerDisplay, .userDisplay {
+  margin: 20px 0px;
+}
+
+.computer_score, .user_score {
+  margin: 20px 0px;
+}

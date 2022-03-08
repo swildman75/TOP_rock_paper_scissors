@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Rock, Paper, Scissors</h1>
+  <h2 class="user_score">User Score: <span id="userScore"></span></h2>
+  <h2 class="computer_score">Computer Score: <span id="computerScore"></span></h2>
+  <p class="pick">Pick one: </p>
+  <div class="img_container">
+    <input type="image" value="rock" src="./images/rock.png" class="small_img" id="rock">
+    <input type="image" value="paper" src="./images/toilet-paper.png" class="small_img" id="paper">
+    <input type="image" value="scissors" src="./images/scissors.png" class="small_img" id="scissors">
+  </div>
+  <h2 class="computerDisplay">Computer Choice: <span id="computer_choice"></span></h2>
+  <h2 class="userDisplay">User Choice: <span id="user_choice"></span></h2>
+  <h2 class="resultDisplay">Result: <span id="result"></span></h2>
 
 
-    <script src="app.js"></script>
-  </body>
+  <script src="app.js"></script>
+</body>
+
 </html>

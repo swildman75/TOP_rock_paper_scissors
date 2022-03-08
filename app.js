@@ -1,71 +1,69 @@
-// Rock, Paper, Scissors game for The Odin Project
-// Pseudocode =>
-// 1 - User chooses between (rock, paper or scisors) case insensitive
-// 2 - Computer will randomly choose between rock, paper, and Scissors
-// 3 - Compare user choice against computer choice
-// 4 - print out who won
-// 5 - print out times won marker
-// 6 - tie
-//     rock beats Scissors
-//     paper beats Rock
-//     scissors beats paper
-
-// variables for player score and computer score
-let playerScore = 0;
+// set variables to manipulate
+const computerChoiceDisplay = document.querySelector('#computer_choice');
+const userChoiceDisplay = document.querySelector('#user_choice');
+const resultDisplay = document.querySelector('#result');
+const userScoreDisplay = document.querySelector('#userScore');
+const computerScoreDisplay = document.querySelector('#computerScore');
+const possibleChoices = document.querySelectorAll('input');
+let userChoice;
+let computerChoice;
+let result;
+let userScore = 0;
 let computerScore = 0;
 
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+  userChoice = e.target.id;
+  userChoiceDisplay.textContent = userChoice;
+  generateComputerChoice();
+  getResult();
+}))
 
-// function to pick computer choice
-let computerChoice = (choices) => {
-  choices = ["rock", "paper", "scissors"];
-  return choices[Math.floor(Math.random() * choices.length)];
-}
+// function to pick a random computer choice
+function generateComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * possibleChoices.length);
 
-// prompt player to pick and then turn answer to lower case
-let playerChoice = prompt("rock, paper or scissors: ").toLowerCase();
-
-// function to play one round
-let playRound = (playerChoice, computerChoice) => {
-  if (playerChoice === "rock" && computerChoice === "scissors") {
-    playerScore++;
-    return `You won, ${playerChoice} beats ${computerChoice}!!`;
-  } else if (playerChoice === "paper" && computerChoice === "rock") {
-    playerScore++;
-    return `You won, ${playerChoice} beats ${computerChoice}!!`;
-  } else if (playerChoice === "scissors" && computerChoice === "paper") {
-    playerScore++;
-    return `You won, ${playerChoice} beats ${computerChoice}!!`;
-  } else if (computerChoice === "rock" && playerChoice === "scissors") {
-    computerScore++;
-    return `You lost, ${computerChoice} beats ${playerChoice}!!`;
-  } else if (computerChoice === "paper" && playerChoice === "rock") {
-    computerScore++;
-    return `You lost, ${computerChoice} beats ${playerChoice}!!`;
-  } else if (computerChoice === "scissors" && playerChoice === "paper") {
-    computerScore++;
-    return `You lost, ${computerChoice} beats ${playerChoice}!!`;
-  } else if (computerChoice === playerChoice) {
-    return "It's a tie!!";
+  if (randomNumber === 0) {
+    computerChoice = 'rock';
   }
-}
-
-// game function
-// let game = () => {
-//   for (var i = 0; i < 10; i++) {
-//     console.log(playRound(playerChoice, computerChoice()));
-//   }
-// }
-
-let game = () => {
-  for (var i = 0; i < 10; i++) {
-    if (playerScore <= 5) {
-      console.log(playRound(playerChoice, computerChoice()));
-    } else if (computerScore <= 5) {
-      console.log(playRound(playerChoice, computerChoice()));
-    }
-    console.log(i);
+  if (randomNumber === 1) {
+    computerChoice = 'paper';
   }
+  if (randomNumber === 2) {
+    computerChoice = 'scissors';
+  }
+  computerChoiceDisplay.textContent = computerChoice;
 }
-console.log(game());
-console.log(playerScore);
-console.log(computerScore);
+
+// function to see who won the result
+function getResult() {
+  if (userChoice === computerChoice) {
+    result = "It's a draw!!";
+  }
+  else if (userChoice === 'rock' && computerChoice === 'scissors') {
+    userScore++;
+    result = "You win this round, great job!!";
+  }
+  else if (userChoice === 'paper' && computerChoice === 'rock') {
+    userScore++;
+    result = "You win this round, great job!!";
+  }
+  else if (userChoice === 'scissors' && computerChoice === 'paper') {
+    userScore++;
+    result = "You win this round, great job!!";
+  }
+  else if (userChoice === 'rock' && computerChoice === 'paper') {
+    computerScore++;
+    result = "You lose this round, maybe next time!!";
+  }
+  else if (userChoice === 'paper' && computerChoice === 'scissors') {
+    computerScore++;
+    result = "You lose this round, maybe next time!!";
+  }
+  else if (userChoice === 'scissors' && computerChoice === 'rock') {
+    computerScore++;
+    result = "You lose this round, maybe next time!!";
+  }
+  resultDisplay.textContent = result;
+  userScoreDisplay.textContent = userScore;
+  computerScoreDisplay.textContent = computerScore;
+}
